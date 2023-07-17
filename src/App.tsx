@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import Navbar from './componentes/encomun/navbar'
 import { Route, Router, Routes as Switch } from 'react-router-dom'
 import Products from './componentes/Products'
 import {products as initialProducts} from './mocks/products.json'
@@ -23,10 +22,10 @@ function App() {
   // para productos
   //const [products]=useState(initialProducts)
   //const [prods, setProds] = useState<AppState["prods"]>([])
-  const [susS, setSus] = useState<AppState["susS"]>([])
-  useEffect(()=>{
+  //const [susS, setSus] = useState<AppState["susS"]>([])
+  /*useEffect(()=>{
     setSus(INITIAL_STATE)
-  },[])
+  },[])*/
   const {filterProducts} = useFilters()
   
   const filteredProducts = filterProducts(initialProducts)
