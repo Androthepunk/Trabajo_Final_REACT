@@ -15,6 +15,7 @@ import { CartProvider } from './context/cart'
 import Form_Usuario from './componentes/encomun/Form_Usuario'
 import { Usuario } from './componentes/encomun/Usuario'
 import { INITIAL_STATE} from './hooks/useNewUsuarioForm'
+import Logueo from './componentes/encomun/Logueo'
 
 interface AppState {
   susS: Array<Usuario>
@@ -63,7 +64,7 @@ function App() {
         <h3>¿Con qué podemos ayudarlo?</h3>
         <Cart/>
         <Products products={filteredProducts}/>
-        {*/<Form_Usuario children={undefined} OnNewSus={handleNewSus}  />*/}
+        <Logueo children={undefined} OnNewSus={handleNewSus}  />
         
       </CartProvider>
      
