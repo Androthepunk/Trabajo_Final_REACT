@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useContext, useEffect, useRef, useState } from 'react'
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
-import Navbar from './componentes/encomun/navbar'
 import { Route, Router, Routes as Switch } from 'react-router-dom'
 import Products from './componentes/Products'
 import {products as initialProducts} from './mocks/products.json'
@@ -46,7 +46,7 @@ function App() {
     
      <div className='nav-bar' ref={divRef}>
         
-        <Router location={''} /*navigator={undefined}*/>
+        <Router location={''} navigator={undefined}>
            
           <Switch>
             <Route path='/inicio'/>
@@ -64,13 +64,10 @@ function App() {
         <h3>¿Con qué podemos ayudarlo?</h3>
         <Cart/>
         <Products products={filteredProducts}/>
-        <Form_Usuario children={undefined} OnNewSus={handleNewSus}  />
+        {/*<Form_Usuario children={undefined} OnNewSus={handleNewSus}  />*/}
         
       </CartProvider>
-     
-      {/*New perss: {newPerssNumber}
-      New epics: {newEpicsNumber}
-      New ubics: {newUbicsNumber}*/}
+        
     </div>
   )
 }
