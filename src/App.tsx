@@ -1,105 +1,77 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './componentes/encomun/navbar'
 import { Route, Router, Routes as Switch } from 'react-router-dom'
-import Productos from './componentes/Productos'
-import Categorias from './componentes/Categorias'
-import Login from './componentes/Login'
-import Registrate from './componentes/Registrate'
+import Products from './componentes/Products'
+import {products as initialProducts} from './mocks/products.json'
+//import Categorias from './componentes/Categorias'
+//import Login from './componentes/Login'
+//import Registrate from './componentes/Registrate'
+//import { FiltersContext } from './context/filters'
+import { useFilters } from './hooks/useFilters'
+import { Cart } from './componentes/Cart'
+import { CartProvider } from './context/cart'
+import Form_Usuario from './componentes/encomun/Form_Usuario'
+import { Usuario } from './componentes/encomun/Usuario'
+import { INITIAL_STATE} from './hooks/useNewUsuarioForm'
 
 interface AppState {
-  prods: Array<prod>
-  categs: Array<categ>
-  regs: Array<reg>
-  logs: Array<log>
-  //newPerssNumber: number
-  //newEpicsNumber: number
-  //newUbicsNumber: number
+  susS: Array<Usuario>
 }
-
 
 function App() {
   // para productos
-  const [prods, setProds] = useState<AppState["prods"]>([])
-  const [newProdsNumber, setNewProdsNumber] = useState<AppState["newProdsNumber"]>(0)
+  //const [products]=useState(initialProducts)
+  //const [prods, setProds] = useState<AppState["prods"]>([])
+  const [susS, setSus] = useState<AppState["susS"]>([])
+  useEffect(()=>{
+    setSus(INITIAL_STATE)
+  },[])
+  const {filterProducts} = useFilters()
+  
+  const filteredProducts = filterProducts(initialProducts)
+
+  //const [newProdsNumber, setNewProdsNumber] = useState<AppState["newProdsNumber"]>(0)
   const divRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    setProds()
-  }, [])
+ 
 
-// para episodios
-
-  const [categs, setCategs] = useState<AppState["categs"]>([])
-  const [newCategsNumber, setNewCategsNumber] = useState<AppState["newCategsNumber"]>(0)
-
-  useEffect(() => {
-    setCategs()
-  }, [])
-
-// para ubicaciones
-
-const [regs, setRegs] = useState<AppState["regs"]>([])
-  const [newRegsNumber, setNewregsNumber] = useState<AppState["newRegsNumber"]>(0)
-  useEffect(() => {
-    setRegs()
-  }, [])
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [logs, setLogs] = useState<AppState["logs"]>([])
-  const [newLogsNumber, setNewLogsNumber] = useState<AppState["newLogsNumber"]>(0)
-  useEffect(() => {
-    setLogs()
-  }, [])
-
-  const handleNewProds = (newProds: prods): void => {
-    setProds(prods => [... prods, newProds])
-    setNewProdsNumber( p => p + 1)
-  }
-
-  const handleNewCategs = (newCategs: pers): void => {
-    setCategs(categs => [... categs, newCategs])
-    setNewCategsNumber( m => m + 1)
-  }
-
-  const handleNewRegs = (newRegs: regs): void => {
-    setRegs(regs => [... regs, newRegs])
-    setNewRegsNumber( n => n + 1)
-  }
-
-  const handleNewLogs = (newLogs: logs): void => {
-    setLogs(logs => [... logs, newlogs])
-    setNewLogsNumber( n => n + 1)
+  const handleNewSus = (newSus: Usuario): void =>{
+    setSus(susS =>[...susS, newSus])
   }
 
   return (
-    <>
+    <div className='App' ref={divRef}>
     
      <div className='nav-bar' ref={divRef}>
-        <Navbar/>
-        <Router location={''} navigator={undefined}>
-         
+        
+        <Router location={''} /*navigator={undefined}*/>
+           
           <Switch>
             <Route path='/inicio'/>
-            <Route path='/Productos' element={<Productos prods={prods}/>}/>
-            <Route path='/Categorias' element={<Categorias categs={categs}/>}/>
-            <Route path='/Registrate' element={<Registrate regs={regs}/>}/>
-            <Route path='/Logueate' element={<Login logs={logs}/>}/>
+            <Route path='/Products' element={<Products products={filteredProducts}/>}/>
+            {/*<Route path='/Categorias' element={<Categorias categs={categs}/>}/>
+            <Route path='/Registrate' element={<Form_Usuario children={undefined} OnNewSus={handleNewSus}  />}/>
+            {/*<Route path='/Logueate' element={<Login logs={logs}/>}/>*/}
             
           </Switch>
         </Router>
       </div> 
-      <div className='App' ref={divRef}>
+      <CartProvider>
         
-        <h1>Bienvenido a mi rebusque</h1>
-        <Productos/>
-      </div>
+        <h1>Bienvenido a mi tienda</h1>
+        <h3>¿Con qué podemos ayudarlo?</h3>
+        <Cart/>
+        <Products products={filteredProducts}/>
+        <Form_Usuario children={undefined} OnNewSus={handleNewSus}  />
+        
+      </CartProvider>
      
       {/*New perss: {newPerssNumber}
       New epics: {newEpicsNumber}
       New ubics: {newUbicsNumber}*/}
-    </>
+    </div>
   )
 }
 

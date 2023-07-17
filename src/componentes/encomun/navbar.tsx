@@ -31,6 +31,11 @@ const Navbar = () =>  {
           
                         </li>
                         <li className="nav-item">
+          
+                            <Link className="nav-link text-light" to="{Form_Usuario}">Registrate</Link>
+          
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link text-light" to="{Login}">Logueate</Link>
                         </li>
                     </ul>
