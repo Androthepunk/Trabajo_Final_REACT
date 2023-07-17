@@ -34,9 +34,9 @@ function App() {
   const divRef = useRef<HTMLDivElement>(null)
  
 
-  const handleNewSus = (newSus: Usuario): void =>{
+ /* const handleNewSus = (newSus: Usuario): void =>{
     setSus(susS =>[...susS, newSus])
-  }
+  }*/
 
   return (
     <div className='App' ref={divRef}>
