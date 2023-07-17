@@ -1,6 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './componentes/encomun/navbar'
 import { Route, Router, Routes as Switch } from 'react-router-dom'
@@ -64,13 +62,10 @@ function App() {
         <h3>¿Con qué podemos ayudarlo?</h3>
         <Cart/>
         <Products products={filteredProducts}/>
-        <Form_Usuario children={undefined} OnNewSus={handleNewSus}  />
+        {/+<Form_Usuario children={undefined} OnNewSus={handleNewSus}  />*/}
         
       </CartProvider>
      
-      {/*New perss: {newPerssNumber}
-      New epics: {newEpicsNumber}
-      New ubics: {newUbicsNumber}*/}
     </div>
   )
 }
