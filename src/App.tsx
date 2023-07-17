@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import Navbar from './componentes/encomun/navbar'
 import { Route, Router, Routes as Switch } from 'react-router-dom'
@@ -44,7 +44,7 @@ function App() {
     
      <div className='nav-bar' ref={divRef}>
         
-        <Router location={''} /*navigator={undefined}*/>
+        <Router location={''} navigator={undefined}*/>
            
           <Switch>
             <Route path='/inicio'/>
