@@ -45,7 +45,7 @@ function App() {
     
      <div className='nav-bar' ref={divRef}>
         
-        <Router location={''} /*navigator={undefined}*/>
+        <Router location={''} navigator={undefined}>
            
           <Switch>
             <Route path='/inicio'/>
@@ -63,13 +63,11 @@ function App() {
         <h3>¿Con qué podemos ayudarlo?</h3>
         <Cart/>
         <Products products={filteredProducts}/>
-        <Form_Usuario children={undefined} OnNewSus={handleNewSus}  />
+        {*/<Form_Usuario children={undefined} OnNewSus={handleNewSus}  />*/}
         
       </CartProvider>
      
-      {/*New perss: {newPerssNumber}
-      New epics: {newEpicsNumber}
-      New ubics: {newUbicsNumber}*/}
+      
     </div>
   )
 }
