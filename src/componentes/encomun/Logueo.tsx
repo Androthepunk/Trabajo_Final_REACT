@@ -35,9 +35,9 @@ function Logueo({OnNewSus}: FormProps) {
         <div className='form'>
             <form onSubmit={handleSubmit}>
                 <label>Usuario</label>
-                <input onChange={handleChange} value={inputValues.nombre_Us} aria-label="nombre_Us" type='text' name='Usuario' placeholder="Usuario" />
+                <input onChange={handleChange} value={inputValues.nombre_Us} aria-label="nombre_Us" type='text' name='username' placeholder="Usuario" />
                 <label>Contraseña</label>
-                <input onChange={handleChange} value={inputValues.contraseña} aria-label="contraseña" type='text' name='contraseña' placeholder="Ingrese_contraseña"/>
+                <input onChange={handleChange} value={inputValues.contraseña} aria-label="contraseña" type='password' name='password' placeholder="Ingrese_contraseña"/>
                 
                 <button type='submit'>Ingresar</button>
                 <button type='submit'>Cancelar</button>
