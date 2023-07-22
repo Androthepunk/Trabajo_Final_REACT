@@ -7,7 +7,7 @@ import { Route, Router, RouterProps, Routes as Switch } from 'react-router-dom'
 import Products from './componentes/Products'
 import {products as initialProducts} from './mocks/products.json'
 //import Categorias from './componentes/Categorias'
-import Login from './componentes/Login'
+import Login from './componentes/encomun/Logueo'
 //import Registrate from './componentes/Registrate'
 //import { FiltersContext } from './context/filters'
 import { useFilters } from './hooks/useFilters'
@@ -54,9 +54,9 @@ function App() {
           <Switch>
             <Route path='/inicio'/>
             <Route path='/Productos' element={<Products products={filteredProducts}/>}/>
-            {/*<Route path='/Categorias' element={<Categorias categs={categs}/>}/>
+            {/*<Route path='/Logueate' element={<Login logs={logs}/>}/>
+            <Route path='/Categorias' element={<Categorias categs={categs}/>}/>*/}
             <Route path='/Registrate' element={<Form_Usuario children={undefined} OnNewSus={handleNewSus}  />}/>
-            {/*<Route path='/Logueate' element={<Login logs={logs}/>}/>*/}
             <Route path='/Logueate' element={<Logueo OnNewSus={handleNewSus} children={undefined}/>}/>
           </Switch>
         </Router>
