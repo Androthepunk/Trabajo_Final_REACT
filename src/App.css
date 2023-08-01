@@ -49,7 +49,7 @@
   margin-right: auto;
 }
 .App {
-  display: inline-flex;
+  display:grid;
   place-content:initial;
   align-content: flex-start;
   align-items:center;
